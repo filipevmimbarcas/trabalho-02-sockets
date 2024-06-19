@@ -4,5 +4,5 @@ def Create(num)-> str:
   vendor = input('Fabricante: ')
   model = input ('Modelo: ')
   option = str(num)
-  data = f'{option},{name},{vendor},{model}'
+  data = f'{name},{vendor},{model},{option}'
   return data

@@ -1,34 +1,30 @@
 import os 
+import pprint
 
 fileName = 'file.txt'
 
-def ValidateFile(file)->bool:
-  if os.path.exists(file):
-    return True
-  else:
-    return False
-
-def GenerateId()->int:
-  if not ValidateFile(fileName):
+def GenerateId():
+  if not os.path.exists(fileName):
+    print(f'The {fileName} does not exist, creating file...\n')
     return 1
   else:
-    with open(fileName,'r') as file:
-      lines = file.readlines()
-      counter = int(lines[-1][0]) + 1
+    print(f'The {fileName} already exists')
+    file = open(fileName)
+    lines = file.readlines()
+    file.close()
+    counter = len(lines) + 1
     return counter
-  
 
-def Create(name ,vendor, model):
+#Insere um dipositivo
+def Create(name,vendor,model):
   with open(fileName,'a',encoding='utf8') as file:
-    file.write(f'{name},{vendor},{model}\n')
+    id = GenerateId()
+    file.write(f'{id};{name};{vendor};{model}\n')
+    print('Asset registered successfully')
+    line = {}
+    line.update({'id': id})
+    line.update({'name': name})
+    line.update({'vendor': vendor})
+    line.update({'model': model})
+    print(line)
 
-
-
-def GetAll():
-  pass
-
-def GetItem():
-  pass
-
-def DeleteByID():
-  pass

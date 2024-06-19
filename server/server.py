@@ -1,6 +1,5 @@
 import socket 
 import serverFunctions as s
-
 host = '127.0.0.1'
 port = 9000
 
@@ -22,14 +21,14 @@ while True:
   data = data.decode()
 
   dataList = data.split(',')
-  option = int(dataList[0])
+  option = int(dataList[-1])
 
   if data == 'end':
     print('Connection is over')
     break
 
   if option == 1:
-    s.Create(dataList[1],dataList[2],dataList[3])
+    s.Create(dataList[0],dataList[1],dataList[2])
   elif option == 2:
     pass
   elif option == 3:
